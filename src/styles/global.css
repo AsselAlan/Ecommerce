@@ -1,0 +1,13 @@
+/* CartDrawer responsive fullscreen en móviles */
+@media (max-width: 768px) {
+  .cart-drawer .offcanvas {
+    width: 100vw !important;
+    max-width: 100vw !important;
+  }
+}
+
+.hover-shadow:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+  transition: all 0.2s ease;
+}
