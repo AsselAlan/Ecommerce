@@ -18,6 +18,7 @@ function App() {
     <AuthProvider>
       <ProductProvider>
         <CartProvider>
+         <BrowserRouter basename="/Ecommerce">
           <Router>
             <AppNavbar />
             <main>
@@ -25,6 +26,7 @@ function App() {
             </main>
             <Footer />
           </Router>
+         </BrowserRouter>
         </CartProvider>
       </ProductProvider>
     </AuthProvider>
