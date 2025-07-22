@@ -1,6 +1,6 @@
 import React from "react";
 import { AuthProvider } from "./context/AuthContext";
-import { Route, BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import AppRoutes from "./routes/AppRoutes";
 import { ProductProvider } from "./context/ProductContext";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -18,15 +18,13 @@ function App() {
     <AuthProvider>
       <ProductProvider>
         <CartProvider>
-         <BrowserRouter basename="/Ecommerce">
-          <Router>
+          <BrowserRouter basename="/Ecommerce">
             <AppNavbar />
             <main>
               <AppRoutes />
             </main>
             <Footer />
-          </Router>
-         </BrowserRouter>
+          </BrowserRouter>
         </CartProvider>
       </ProductProvider>
     </AuthProvider>
