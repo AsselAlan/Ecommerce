@@ -8,7 +8,7 @@ const AdminRoutes = () => {
 
   if (loading) return null; // o podés renderizar un spinner
 
-  const isAdmin = user?.email === "asselalan@gmail.com"; // luego usar metadata
+  const isAdmin = user?.email === import.meta.env.VITE_EMAIL_ADMIN; // luego usar metadata
 
   return isAdmin ? <Outlet /> : <Navigate to="/" replace />;
 };
