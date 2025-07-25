@@ -8,6 +8,8 @@ import Login from "../pages/Login";
 import Profile from "../pages/Profile";
 import OrdenConfirmada from "../pages/OrdenConfirmada";
 import UserOrders from "../pages/UserOrders";
+import CompraExitosa from "../pages/CompraExitosa";
+import { PagoExitoso, PagoFallido, PagoPendiente } from "../pages/payment/PaymentPages";
 import AdminRoutes from "./AdminRoutes";
 import AdminLayout from "../admin/AdminLayout";
 import Dashboard from "../admin/Dashboard";
@@ -27,6 +29,14 @@ const AppRoutes = () => {
         element={<OrdenConfirmada />}
       />
       <Route path="/profile/orders" element={<UserOrders />} />
+      
+      {/* Página de agradecimiento después de compra exitosa */}
+      <Route path="/compra-exitosa/:numeroOrden" element={<CompraExitosa />} />
+      
+      {/* Rutas de MercadoPago */}
+      <Route path="/pago-exitoso" element={<PagoExitoso />} />
+      <Route path="/pago-fallido" element={<PagoFallido />} />
+      <Route path="/pago-pendiente" element={<PagoPendiente />} />
 
       <Route element={<AdminRoutes />}>
         <Route path="/admin" element={<AdminLayout />}>
