@@ -4,14 +4,11 @@ import { BrowserRouter } from "react-router-dom";
 import AppRoutes from "./routes/AppRoutes";
 import { ProductProvider } from "./context/ProductContext";
 import "bootstrap/dist/css/bootstrap.min.css";
-import AppNavbar from "./components/AppNavbar";
-import Footer from "./components/Footer";
 import { CartProvider } from "./context/CartContext";
 import "./styles/global.css";
 // ADMIN ------------------------------
-import AdminLayout from "./admin/AdminLayout";
-import AdminRoutes from "./routes/AdminRoutes";
-import { Dashboard, Pedidos, Productos, Usuarios } from "./admin";
+import AppNavbar from "./components/navbar/AppNavbar";
+import Footer from "./components/footer/Footer";
 
 function App() {
   return (

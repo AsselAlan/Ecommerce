@@ -2,9 +2,8 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "../pages/Home";
 import Products from "../pages/Products";
-import ProductDetail from "../pages/ProductDetail";
-import Register from "../pages/Register";
-import Login from "../pages/Login";
+import Login from "../pages/Auth/Login";
+import Register from "../pages/Auth/Register";
 import Profile from "../pages/Profile";
 import OrdenConfirmada from "../pages/OrdenConfirmada";
 import UserOrders from "../pages/UserOrders";
@@ -14,6 +13,7 @@ import AdminRoutes from "./AdminRoutes";
 import AdminLayout from "../admin/AdminLayout";
 import Dashboard from "../admin/Dashboard";
 import { Pedidos, Productos, Usuarios } from "../admin";
+import ProductDetail from "../pages/ProductDetail";
 
 const AppRoutes = () => {
   return (

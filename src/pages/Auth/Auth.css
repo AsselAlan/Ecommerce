@@ -1,0 +1,25 @@
+.container-auth {
+   height: 60vh;
+}
+
+.title-auth{
+   color: var(--color-accent);
+}
+
+.btn-complete{
+   background-color: var(--color-accent);
+   color: var(--color-light);
+   border: none;
+   box-shadow: none;
+   border-radius: 10px;
+   padding: 0.4rem 0rem;
+}
+
+.btn-complete:hover{
+   background-color: transparent;
+   color: var(--color-accent);
+   border: 1px solid var(--color-accent);
+   box-shadow: none;
+   border-radius: 10px;
+   padding: 0.4rem 0rem;
+}

@@ -22,6 +22,35 @@ export const CartProvider = ({ children }) => {
     });
   };
 
+  // ✅ NUEVA FUNCIÓN: Decrementar cantidad
+  const decrementFromCart = (productId) => {
+    setCart((prev) => {
+      return prev.map((item) => {
+        if (item.id === productId) {
+          // Si ya está en 1, no decrementar más
+          if (item.quantity <= 1) {
+            return item;
+          }
+          return { ...item, quantity: item.quantity - 1 };
+        }
+        return item;
+      });
+    });
+  };
+
+  // ✅ NUEVA FUNCIÓN: Actualizar cantidad directamente
+  const updateQuantity = (productId, newQuantity) => {
+    if (newQuantity < 1) return; // No permitir cantidades menores a 1
+    
+    setCart((prev) => {
+      return prev.map((item) =>
+        item.id === productId
+          ? { ...item, quantity: newQuantity }
+          : item
+      );
+    });
+  };
+
   const removeFromCart = (id) => {
     setCart((prev) => prev.filter((item) => item.id !== id));
   };
@@ -73,12 +102,14 @@ export const CartProvider = ({ children }) => {
       value={{ 
         cart, 
         addToCart, 
+        decrementFromCart,     // ← NUEVA
+        updateQuantity,        // ← NUEVA
         removeFromCart, 
         clearCart,
-        clearCartAfterPayment, // ← NUEVA
-        hasPendingPayment,     // ← NUEVA
-        setPendingPayment,     // ← NUEVA
-        clearPendingPayment    // ← NUEVA
+        clearCartAfterPayment,
+        hasPendingPayment,
+        setPendingPayment,
+        clearPendingPayment
       }}
     >
       {children}

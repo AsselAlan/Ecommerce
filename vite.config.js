@@ -5,11 +5,11 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   base: '/Ecommerce/',
-   server: {
+  server: {
+    host: true, // Permite conexiones externas
     allowedHosts: [
       'localhost',
-      '127.0.0.1',
-      'legacy-play-seekers-generates.trycloudflare.com' // <-- agrega aquí tu host Cloudflare
+      '.trycloudflare.com' // Permite todos los subdominios de trycloudflare
     ]
   }
 })

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form, Button, Container, Alert } from "react-bootstrap";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -22,13 +22,14 @@ const Login = () => {
   };
 
   return (
-    <Container className="mt-5" style={{ maxWidth: "400px" }}>
-      <h2 className="mb-4">Iniciar sesión</h2>
+    <Container className="container-auth mt-5" style={{ maxWidth: "400px" }}>
+      <h2 className="mb-4 apple-regular title-auth">Iniciar sesión</h2>
       {error && <Alert variant="danger">{error}</Alert>}
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
-          <Form.Label>Email</Form.Label>
+          <Form.Label htmlFor="email" className="sans-regular">Email</Form.Label>
           <Form.Control
+            id="email"
             type="email"
             placeholder="tu@email.com"
             value={email}
@@ -38,9 +39,10 @@ const Login = () => {
         </Form.Group>
 
         <Form.Group className="mb-4">
-          <Form.Label>Contraseña</Form.Label>
+          <Form.Label htmlFor="password" className="sans-regular">Contraseña</Form.Label>
           <Form.Control
-            type="password"
+            id="password"
+            type="password" 
             placeholder="Tu contraseña"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -48,9 +50,9 @@ const Login = () => {
           />
         </Form.Group>
 
-        <Button type="submit" variant="success" className="w-100">
-          Ingresar
-        </Button>
+        <button type="submit" className="w-100 btn-complete sans-regular">
+          Iniciar sesión
+        </button>
       </Form>
     </Container>
   );

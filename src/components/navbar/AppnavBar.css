@@ -1,0 +1,60 @@
+.navbar {
+  background-color: var(--color-accent) !important;
+  padding-top: 1rem !important;
+  height: 6rem !important;
+}
+
+
+.link-navbar{
+  color: var(--color-light) !important;
+  font-size: 1rem !important;
+}
+
+.trash-icon {
+  width: 25px;
+  height: 25px;
+  color: var(--color-light);
+}
+
+.trash-icon-user {
+  width: 20px;
+  height: 20px;
+  color: var(--color-light);
+}
+
+.badge{
+  translate: -10px -10px;
+}
+
+.user-button{
+    border: 1px solid var(--color-secondary) !important;    
+    background-color: var(--color-secondary) !important;
+    border-radius: 15px !important;
+    padding: 0.5rem 2rem 0.5rem 2rem;
+    color: var(--color-accent);
+    font-size: 1rem;
+    min-width: 8rem;
+}
+
+.user-iniciar{
+    border: 1px solid var(--color-light) !important;
+    background-color: var(--color-accent) !important;
+    border-radius: 15px !important;
+    padding: 0.5rem 2rem 0.5rem 2rem;
+    color: var(--color-light);
+    font-size: 1rem;
+    min-width: 8rem;
+}
+
+.user-button:hover {
+  background-color: var(--color-secondary-hover) !important;
+  color: var(--color-light) !important;
+  border: 1px solid var(--color-light) !important;
+}
+
+ 
+.user-iniciar:hover{
+  background-color: var(--color-secondary) !important;
+  color: var(--color-accent) !important;
+  border: 1px solid var(--color-secondary) !important;
+} 

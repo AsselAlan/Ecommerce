@@ -1,0 +1,29 @@
+.container-footer{
+   background-color: var(--color-accent) !important;
+   color: var(--color-light) !important;
+}
+
+
+.img-año{
+    width: 150px;
+}
+
+.contact-inf{
+    color: var(--color-light) !important;
+}
+
+.tittle-links{
+    color: var(--color-light) !important;
+    font-size: 1.8rem;
+}
+
+.link{
+    color: var(--color-light) !important;
+    font-size: 1rem;
+}
+
+.border-lateral{
+  width: 300px;
+  margin-right: 3rem;
+  border-right: 1px solid var(--color-light) !important;  
+}
