@@ -1,7 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "../pages/Home";
-import Products from "../pages/Products";
 import Login from "../pages/Auth/Login";
 import Register from "../pages/Auth/Register";
 import Profile from "../pages/Profile";
@@ -13,14 +12,15 @@ import AdminRoutes from "./AdminRoutes";
 import AdminLayout from "../admin/AdminLayout";
 import Dashboard from "../admin/Dashboard";
 import { Pedidos, Productos, Usuarios } from "../admin";
-import ProductDetail from "../pages/ProductDetail";
+import ProductDetail from "../pages/products/ProductDetail";
+import Products from "../pages/products/Products";
 
 const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/products" element={<Products />} />
-      <Route path="/product/:id" element={<ProductDetail />} />
+      <Route path="/products" element={<Products/>} />
+      <Route path="/product/:id" element={<ProductDetail/>} />
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
       <Route path="/profile" element={<Profile />} />

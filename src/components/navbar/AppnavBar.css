@@ -4,6 +4,19 @@
   height: 6rem !important;
 }
 
+.navbar .button-brg{
+  background-color: transparent !important;
+  border: none;
+  padding: 0px;
+  padding-right: 15px;
+}
+
+.navbar .button-brg .trash-icon-brg{
+  padding: 0px;
+  width: 30px;
+  height: 30px;
+}
+
 
 .link-navbar{
   color: var(--color-light) !important;
@@ -37,13 +50,13 @@
 }
 
 .user-iniciar{
-    border: 1px solid var(--color-light) !important;
-    background-color: var(--color-accent) !important;
-    border-radius: 15px !important;
-    padding: 0.5rem 2rem 0.5rem 2rem;
-    color: var(--color-light);
-    font-size: 1rem;
-    min-width: 8rem;
+  border: 1px solid var(--color-light) !important;
+  background-color: var(--color-accent) !important;
+  border-radius: 15px !important;
+  padding: 0.5rem 2rem 0.5rem 2rem;
+  color: var(--color-light);
+  font-size: 1rem;
+  min-width: 8rem;
 }
 
 .user-button:hover {
@@ -52,9 +65,50 @@
   border: 1px solid var(--color-light) !important;
 }
 
- 
+
 .user-iniciar:hover{
   background-color: var(--color-secondary) !important;
   color: var(--color-accent) !important;
   border: 1px solid var(--color-secondary) !important;
-} 
+}
+
+.container-burger{
+  width: 100% !important;
+}
+
+.button-user-burger{
+  padding: 0px;
+  background-color: transparent !important;
+  border: none !important;
+}
+
+.offcanvas-fullscreen-modern{
+  height: auto;
+  padding: 0px;
+  margin-top: 6rem;
+}
+
+.offcanvas-body{
+  padding: 0px
+}
+
+.nav-link{
+  padding: 0px
+}
+
+.modal-open{
+  padding: 0px !important;
+}
+
+.nav{
+  width: 100%;
+  height: 100%;
+}
+
+.container-dropdown{
+  border: 0px !important;
+  width: 100% !important;
+  height: 60px;
+  padding: 0;
+  background-color: var(--color-secondary);
+}

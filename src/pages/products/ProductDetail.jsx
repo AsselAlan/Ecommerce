@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useProducts } from "../context/ProductContext";
-import { useCart } from "../context/CartContext";
+import { useProducts } from "../../context/ProductContext";
+import { useCart } from "../../context/CartContext";
 import { Container, Row, Col, Image, Button, ListGroup } from "react-bootstrap";
 
 const ProductDetail = () => {

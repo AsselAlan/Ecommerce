@@ -45,7 +45,7 @@ const Footer = () => {
             <img src={footerAño} className="img-año" alt="Footer Año" width="100%" />
             <div></div>
           </Col>
-          <Col md={4} className="sans-light d-flex flex-column justify-content-between">
+          <Col md={3} className="sans-light d-flex flex-column justify-content-between">
             <h6 className="apple-medium tittle-links">Enlaces</h6>
             <ul className="list-unstyled d-flex flex-column justify-content-end m-0">
               <li>
@@ -68,7 +68,7 @@ const Footer = () => {
               </li>
             </ul>
           </Col>
-          <Col md={4} className="contact-info sans-light d-flex flex-column justify-content-between m-0">
+          <Col md={3} className="contact-info sans-light d-flex flex-column justify-content-between m-0">
             <h6 className="apple-medium tittle-links">Contacto</h6>
             <div>
               <p className="small link m-0 link">

@@ -3,7 +3,6 @@
    color: var(--color-light) !important;
 }
 
-
 .img-año{
     width: 150px;
 }
@@ -27,3 +26,40 @@
   margin-right: 3rem;
   border-right: 1px solid var(--color-light) !important;  
 }
+
+
+/* RESPONSIVE BREAKPOINTS */
+
+
+
+@media (min-width: 768px) {
+  .container-footer {
+    padding: 2rem 0;
+  }
+  
+  .border-lateral {
+    border-right: 1px solid var(--color-light) !important;
+    margin-right: 1.5rem;
+    padding-right: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .tittle-links {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+  
+  .img-año {
+    width: 140px;
+  }
+  
+  .link {
+    font-size: 0.95rem;
+  }
+  
+  .list-unstyled li {
+    margin-bottom: 0.5rem;
+    text-align: start !important;
+  }
+}
+

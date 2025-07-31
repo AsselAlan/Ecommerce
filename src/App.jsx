@@ -9,22 +9,25 @@ import "./styles/global.css";
 // ADMIN ------------------------------
 import AppNavbar from "./components/navbar/AppNavbar";
 import Footer from "./components/footer/Footer";
+import { FavsProvider } from "./context/FavsContext";
 
 function App() {
   return (
-    <AuthProvider>
-      <ProductProvider>
-        <CartProvider>
-          <BrowserRouter basename="/Ecommerce">
-            <AppNavbar />
-            <main>
-              <AppRoutes />
-            </main>
-            <Footer />
-          </BrowserRouter>
-        </CartProvider>
-      </ProductProvider>
-    </AuthProvider>
+    <FavsProvider>
+      <AuthProvider>
+        <ProductProvider>
+          <CartProvider>
+              <BrowserRouter basename="/Ecommerce">
+                <AppNavbar />
+                <main>
+                  <AppRoutes />
+                </main>
+              <Footer />
+            </BrowserRouter>
+          </CartProvider>
+        </ProductProvider>
+      </AuthProvider>
+    </FavsProvider>
   );
 }
 

@@ -1,8 +1,7 @@
-
 import React from 'react';
 import { Modal } from 'react-bootstrap';
 
-const CartModals = ({
+const FavsModals = ({
   showRemoveModal,
   showClearModal,
   selectedProduct,
@@ -12,18 +11,18 @@ const CartModals = ({
 }) => {
   return (
     <>
-      {/* Modal para eliminar producto */}
+      {/* Modal para eliminar producto de favoritos */}
       <Modal 
         show={showRemoveModal} 
         onHide={onCancel}
         centered
-        className="cart-modal"
+        className="favs-modal"
       >
         <Modal.Header closeButton className="border-0"></Modal.Header>
         
         <Modal.Body className="text-center py-4">
           <p className="modal-title sans-regular mb-4">
-            ¿Querés eliminar este producto del carrito?
+            ¿Querés eliminar este producto de favoritos?
           </p>
         </Modal.Body>
         
@@ -44,18 +43,18 @@ const CartModals = ({
         </Modal.Footer>
       </Modal>
 
-      {/* Modal para vaciar carrito */}
+      {/* Modal para limpiar favoritos */}
       <Modal 
         show={showClearModal} 
         onHide={onCancel}
         centered
-        className="cart-modal"
+        className="favs-modal"
       >
         <Modal.Header closeButton className="border-0"></Modal.Header>
         
         <Modal.Body className="text-center py-4">
           <p className="modal-title sans-regular mb-4">
-            ¿Estás seguro que deseas vaciar completamente <br /> tu carrito?
+            ¿Estás seguro que deseas eliminar todos <br /> tus productos favoritos?
           </p>
         </Modal.Body>
         
@@ -70,7 +69,7 @@ const CartModals = ({
             onClick={onConfirmClear}
             className="button-green sans-light px-4"
           >
-            Vaciar carrito
+            Limpiar favoritos
           </button>
         </Modal.Footer>
       </Modal>
@@ -78,4 +77,4 @@ const CartModals = ({
   );
 };
 
-export default CartModals;
+export default FavsModals;
