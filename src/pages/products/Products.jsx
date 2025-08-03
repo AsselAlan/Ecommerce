@@ -115,15 +115,15 @@ const Products = () => {
       <Row>
         {/* Sidebar de filtros (izquierda) */}
         <Col md={3}>
-          <Button
-            variant="outline-secondary"
-            className="mb-3"
+          <button
+            // variant="outline-secondary"
+            className="mb-3 btn-filtros"
             onClick={() => setShowFilters(!showFilters)}
             aria-controls="filters-collapse"
             aria-expanded={showFilters}
           >
             {showFilters ? "Ocultar Filtros" : "Mostrar Filtros"}
-          </Button>
+          </button>
 
           <Collapse in={showFilters}>
             <div

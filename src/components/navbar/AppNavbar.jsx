@@ -8,6 +8,7 @@ import {
   Button,
   Dropdown,
   Offcanvas,
+  NavDropdown,
 } from "react-bootstrap";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { FaUser, FaShoppingCart } from "react-icons/fa";
@@ -329,13 +330,22 @@ const AppNavbar = () => {
       >
         <Offcanvas.Body className="d-flex flex-column">
           <Nav className="flex-column">
-            <Nav.Link 
-              as={Link} 
-              to="/" 
-              onClick={handleMenuClose} 
-              className={isActive("/") ? "apple-garamond-bold" : "apple-garamond-light"}
+             <NavDropdown
+              id="nav-dropdown-dark-example"
+              title="Dropdown"
+              menuVariant="dark"
             >
-                <Dropdown align="end" >
+              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">
+                Another action
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action/3.4">
+                Separated link
+              </NavDropdown.Item>
+            </NavDropdown>
+                {/* <Dropdown align="end" >
                 <Dropdown.Toggle
                     variant="outline-secondary"
                     className="container-dropdown d-flex aling-center sans-regular w-100"
@@ -360,8 +370,7 @@ const AppNavbar = () => {
                         Cerrar sesión
                     </Dropdown.Item>
                 </Dropdown.Menu>
-            </Dropdown>
-            </Nav.Link>
+            </Dropdown> */}
             <Nav.Link 
               as={Link} 
               to="/" 

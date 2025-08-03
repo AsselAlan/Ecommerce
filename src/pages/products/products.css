@@ -75,5 +75,11 @@
 }
 
 
+.btn-filtros{
+  background-color: var(--color-ligth) !important;
+  color: var(--color-accent) !important;
+}
 
-
+.form-check{
+  color: var(--color-accent);
+}
