@@ -1,3 +1,7 @@
+.container-section{
+  min-height: 60vh;
+}
+
 .container-product{
   width: 240px !important;
 }
@@ -78,8 +82,37 @@
 .btn-filtros{
   background-color: var(--color-ligth) !important;
   color: var(--color-accent) !important;
+  width: 10rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 15px;
+  border: 2px solid var(--color-accent);
 }
 
-.form-check{
-  color: var(--color-accent);
+.form-check-input:checked { 
+  background-color: var(--color-accent) !important;
+  border: var(--color-accent) !important;
+}
+
+.form-check-input:focus { 
+  box-shadow: 0 0 0 0.2rem rgba(4, 91, 71, 0.25) !important;
+}
+
+/* Cambia el color de la barra */
+.form-range {
+  color: #e0e0e0 !important; 
+  height: 6px;
+  border-radius: 3px;
+}
+
+/* Cambia el color del redondel (thumb) en Chrome, Edge, Safari */
+.form-range::-webkit-slider-thumb {
+  background: #045B47 !important; /* color del redondel */
+  border: 2px solid #fff;
+  box-shadow: 0 0 4px rgba(4,91,71,0.2);
+}
+
+@media (max-width: 500px) {
+  .container-product {
+    width: 280px !important;
+  }
 }

@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Home from "../pages/Home";
 import Login from "../pages/Auth/Login";
 import Register from "../pages/Auth/Register";
 import Profile from "../pages/Profile";
@@ -14,11 +13,18 @@ import Dashboard from "../admin/Dashboard";
 import { Pedidos, Productos, Usuarios } from "../admin";
 import ProductDetail from "../pages/products/ProductDetail";
 import Products from "../pages/products/Products";
+import Home from "../pages/home/Home";
+import TestRLS from "../components/TestRLS";
+import ConfigCheck from "../components/ConfigCheck";
+import WebhookTester from "../components/WebhookTester";
 
 const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/test-rls" element={<TestRLS />} />
+      <Route path="/config-check" element={<ConfigCheck />} />
+      <Route path="/webhook-test" element={<WebhookTester />} />
       <Route path="/products" element={<Products/>} />
       <Route path="/product/:id" element={<ProductDetail/>} />
       <Route path="/register" element={<Register />} />

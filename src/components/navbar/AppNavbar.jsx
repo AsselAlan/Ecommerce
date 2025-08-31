@@ -26,7 +26,7 @@ const AppNavbar = () => {
   const { cart } = useCart();
   const { favs, removeFromFavs, clearFavs } = useFavs();
 
-  
+  const [showUserMenu, setShowUserMenu] = useState(false);
   const [showCart, setShowCart] = useState(false);
   const [showFavs, setShowFavs] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
@@ -82,11 +82,14 @@ const AppNavbar = () => {
                     className="d-flex sans-regular user-button"
                     bsPrefix="btn"
                 >
+                  <div className="d-flex align-items-center">
                     <svg className="trash-icon-user me-2" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M10.323 19.657C7.4392 19.657 4.55488 19.657 1.67113 19.657C1.08581 19.657 0.996075 19.5679 1.00013 18.9924C1.02329 15.5592 3.38019 12.3275 6.6362 11.2426C7.58799 10.9253 8.556 10.7516 9.55816 10.7725C10.4926 10.7921 11.4397 10.7285 12.358 10.8622C15.5914 11.3323 17.8302 13.1323 19.0906 16.1382C19.4814 17.0703 19.6626 18.0551 19.6545 19.07C19.651 19.51 19.5086 19.6564 19.0616 19.6564C16.1489 19.6576 13.2356 19.657 10.323 19.657ZM1.89634 18.7515H18.7924C18.7247 18.3289 18.6905 17.9254 18.5938 17.5375C17.8921 14.7284 16.1651 12.8387 13.4012 11.9888C11.6198 11.4412 9.75732 11.488 7.95447 11.8267C5.1813 12.3478 3.31072 14.0464 2.30161 16.676C2.05034 17.3314 1.90908 18.0215 1.89634 18.7515Z" fill="#045B47" stroke="#045B47" strokeWidth="0.5" strokeMiterlimit="10"/>
                         <path d="M10.3132 9.88167C7.88917 9.88573 5.88484 7.8953 5.87674 5.47471C5.86805 3.00028 7.83996 1.00348 10.2959 1.00001C12.7906 0.995954 14.7746 2.96322 14.7764 5.44229C14.7781 7.89414 12.7836 9.87762 10.3132 9.88167ZM6.77758 5.4145C6.77585 7.39508 8.35927 8.99183 10.3265 8.99298C12.2822 8.99414 13.872 7.40377 13.8749 5.44402C13.8778 3.46807 12.2921 1.88406 10.3109 1.88406C8.3697 1.88406 6.7799 3.4727 6.77758 5.4145Z" fill="#045B47" stroke="#045B47" strokeWidth="0.5" strokeMiterlimit="10"/>
                     </svg>
                     <span>Hola, {userName}!</span>
+                 </div>
+
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                     <Dropdown.Item as={Link} to="/profile">
@@ -138,7 +141,7 @@ const AppNavbar = () => {
             )}
 
             {/* Logo centrado */}
-            <Navbar.Brand as={Link} to="/" className="fw-bold text-primary mx-auto">
+            <Navbar.Brand as={Link} to="/" className="fw-bold text-primary mx-auto navbar-brand-small">
               <svg width="185" height="36" viewBox="0 0 185 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clipPath="url(#clip0_1701_3)">
                 <path d="M10.4596 18.6162C10.4596 11.4725 14.567 6.40079 20.3027 6.40079C24.1141 6.40079 26.4812 8.6965 26.4812 11.547C26.4812 16.9146 19.5247 18.8398 15.6388 18.9143C15.8229 23.3567 17.3417 27.207 21.1159 27.207C24.0769 27.207 28.0724 24.3193 28.3683 23.543L28.8132 23.6175C28.8132 23.8763 24.5217 28.5401 19.0446 28.5401C13.5675 28.5401 10.4596 24.4683 10.4596 18.6204V18.6162ZM22.8933 10.8059C22.8933 9.51003 22.4857 7.17914 20.4517 7.21433C17.0851 7.21433 15.6408 13.0271 15.6408 18.1339C18.7115 18.0594 22.8933 15.95 22.8933 10.8038V10.8059Z" fill="white"/>
@@ -175,17 +178,20 @@ const AppNavbar = () => {
 
             {/* Iconos de la derecha */}
             <div className="d-flex align-items-center">
-              <Nav.Link onClick={handleFavsOpen} title="Favoritos" className="me-2">
+              <Nav.Link onClick={handleFavsOpen} title="Favoritos" >
                 <svg className="trash-icon" width="33" height="29" viewBox="0 0 33 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                  <path d="M9.13191 1.00971C12.3715 0.995377 14.8682 3.02225 16.4026 5.67645C16.5588 5.71307 16.8048 5.1343 16.9092 4.98225C22.6172 -3.28287 33.6252 2.46737 31.7978 11.7467C30.9521 16.0401 26.4346 19.8224 23.2411 22.5952C21.417 24.1794 19.4261 25.9261 17.5324 27.4084C16.9942 27.8295 16.6332 28.2292 15.879 27.8447C11.716 23.8801 5.79843 20.2857 2.68265 15.4303C-1.01178 9.67287 1.48247 1.04235 9.13191 1.00971Z" stroke="white" strokeMiterlimit="10"/>
                 </svg>
-                {cart.length > 0 && (
+                {favs.length > 0 ? (
                   <span className="ms-1 badge bg-danger rounded-pill">
-                    {cart.length}
+                    {favs.length}
                   </span>
-                )}
+                ): (<span className="ms-1">
+                    ㅤ
+                  </span>)
+                }
               </Nav.Link>
-              <Nav.Link onClick={handleCartOpen} title="Carrito" className="me-2">
+              <Nav.Link onClick={handleCartOpen} title="Carrito" >
                 <svg className="trash-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <g clipPath="url(#clip0_1797_1614)">
                   <path d="M8.99543 22.5302C9.39476 24.9944 11.4167 26.8675 13.9121 27.0305C18.8785 27.3536 24.1954 26.7814 29.1983 27.0239C30.2417 27.1148 30.2417 28.4372 29.1983 28.5271C24.1607 28.2433 18.721 28.8989 13.7302 28.5234C10.4268 28.2752 8.09833 25.7989 7.52089 22.6454C6.3482 16.2393 5.97793 9.51563 4.7818 3.09167C4.45559 2.28341 3.74972 1.64186 2.85357 1.55288C2.06615 1.47327 0.173532 1.91721 0.0122988 0.917887C-0.172369 -0.220049 1.85898 0.00191865 2.57891 0.0487473C6.03511 0.274461 6.471 2.99802 6.66598 5.89296L6.80565 6.03439L32.3874 6.04375C34.4403 6.18143 36.0451 7.86351 35.9992 9.93428C35.9673 11.371 34.7965 16.7441 34.2819 18.1518C33.5113 20.2562 30.97 22.5302 28.634 22.5302H8.99543ZM32.7586 7.54508H6.93314L8.94387 21.0373L28.4503 21.0345C30.4901 20.8379 32.288 19.4161 32.9723 17.498C33.4794 16.0744 34.3437 11.7381 34.4815 10.2031C34.5818 9.09136 33.9556 7.7427 32.7595 7.54508H32.7586Z" fill="white"/>
@@ -198,22 +204,14 @@ const AppNavbar = () => {
                   </clipPath>
                   </defs>
                 </svg>
-                {cart.length > 0 && (
+                {cart.length > 0 ? (
                   <span className="ms-1 badge bg-danger rounded-pill">
                     {cart.length}
                   </span>
-                )}
+                ): (<span className="ms-1">
+                    ㅤ
+                  </span>)}
               </Nav.Link>
-
-              <Button
-                className="button-user-burger"
-                onClick={handleMenuOpen}
-              >
-                <svg width="25" height="25" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M10.323 19.657C7.4392 19.657 4.55488 19.657 1.67113 19.657C1.08581 19.657 0.996075 19.5678 1.00013 18.9924C1.02329 15.5592 3.38019 12.3275 6.6362 11.2425C7.58799 10.9253 8.556 10.7516 9.55816 10.7724C10.4926 10.7921 11.4397 10.7284 12.358 10.8622C15.5914 11.3323 17.8302 13.1322 19.0906 16.1381C19.4814 17.0702 19.6626 18.055 19.6545 19.0699C19.651 19.5099 19.5086 19.6564 19.0616 19.6564C16.1489 19.6576 13.2356 19.657 10.323 19.657ZM1.89634 18.7515H18.7924C18.7247 18.3289 18.6905 17.9254 18.5938 17.5375C17.8921 14.7284 16.1651 12.8387 13.4012 11.9888C11.6198 11.4411 9.75732 11.488 7.95447 11.8267C5.1813 12.3478 3.31072 14.0464 2.30161 16.676C2.05034 17.3314 1.90908 18.0215 1.89634 18.7515Z" fill="#FFB7B9" stroke="#FFB7B9" strokeWidth="0.5" strokeMiterlimit="10"/>
-                  <path d="M10.3132 9.88167C7.88917 9.88573 5.88484 7.8953 5.87674 5.47471C5.86805 3.00028 7.83996 1.00348 10.2959 1.00001C12.7906 0.995954 14.7746 2.96322 14.7764 5.44229C14.7781 7.89414 12.7836 9.87762 10.3132 9.88167ZM6.77758 5.4145C6.77585 7.39508 8.35927 8.99183 10.3265 8.99298C12.2822 8.99414 13.872 7.40377 13.8749 5.44402C13.8778 3.46807 12.2921 1.88406 10.3109 1.88406C8.3697 1.88406 6.7799 3.4727 6.77758 5.4145Z" fill="#FFB7B9" stroke="#FFB7B9" strokeWidth="0.5" strokeMiterlimit="10"/>
-                </svg>
-              </Button>
             </div>
           </div>
 
@@ -324,71 +322,78 @@ const AppNavbar = () => {
       <Offcanvas 
         show={showMenu} 
         onHide={handleMenuClose} 
-        placement="top" // Cambiar a "top" para que venga de arriba
+        placement="start" // Cambiar a "top" para que venga de arriba
         className="offcanvas-fullscreen-modern"
         backdrop={false}
       >
         <Offcanvas.Body className="d-flex flex-column">
-          <Nav className="flex-column">
-             <NavDropdown
-              id="nav-dropdown-dark-example"
-              title="Dropdown"
-              menuVariant="dark"
-            >
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
-                {/* <Dropdown align="end" >
-                <Dropdown.Toggle
-                    variant="outline-secondary"
-                    className="container-dropdown d-flex aling-center sans-regular w-100"
-                >
-                  <div className="container">
-                    <svg className="trash-icon-user me-2 mt-1" width="30" height="30" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <Nav className="flex-column">            
+            <Nav.Link onClick={() => setShowUserMenu(!showUserMenu)} style={{ cursor: "pointer" }} className="px-2 container-dropdown d-flex ">
+                  <div className="container d-flex justify-content-between align-items-center user-button p-0"> 
+                    <div>
+                      <svg className="trash-icon-user me-2 mb-1" width="30" height="30" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M10.323 19.657C7.4392 19.657 4.55488 19.657 1.67113 19.657C1.08581 19.657 0.996075 19.5679 1.00013 18.9924C1.02329 15.5592 3.38019 12.3275 6.6362 11.2426C7.58799 10.9253 8.556 10.7516 9.55816 10.7725C10.4926 10.7921 11.4397 10.7285 12.358 10.8622C15.5914 11.3323 17.8302 13.1323 19.0906 16.1382C19.4814 17.0703 19.6626 18.0551 19.6545 19.07C19.651 19.51 19.5086 19.6564 19.0616 19.6564C16.1489 19.6576 13.2356 19.657 10.323 19.657ZM1.89634 18.7515H18.7924C18.7247 18.3289 18.6905 17.9254 18.5938 17.5375C17.8921 14.7284 16.1651 12.8387 13.4012 11.9888C11.6198 11.4412 9.75732 11.488 7.95447 11.8267C5.1813 12.3478 3.31072 14.0464 2.30161 16.676C2.05034 17.3314 1.90908 18.0215 1.89634 18.7515Z" fill="#045B47" stroke="#045B47" strokeWidth="0.5" strokeMiterlimit="10"/>
                         <path d="M10.3132 9.88167C7.88917 9.88573 5.88484 7.8953 5.87674 5.47471C5.86805 3.00028 7.83996 1.00348 10.2959 1.00001C12.7906 0.995954 14.7746 2.96322 14.7764 5.44229C14.7781 7.89414 12.7836 9.87762 10.3132 9.88167ZM6.77758 5.4145C6.77585 7.39508 8.35927 8.99183 10.3265 8.99298C12.2822 8.99414 13.872 7.40377 13.8749 5.44402C13.8778 3.46807 12.2921 1.88406 10.3109 1.88406C8.3697 1.88406 6.7799 3.4727 6.77758 5.4145Z" fill="#045B47" stroke="#045B47" strokeWidth="0.5" strokeMiterlimit="10"/>
                     </svg>
-                    <span>Hola, {userName}!</span>
+                    <span className="sans-medium">Hola, {userName}!</span>
+                    </div>
+                    {showUserMenu ? 
+                    <span className="me-2">
+                      <svg width="16" height="10" viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 9L8.29042 1.56557L1.5 8.99991" stroke="#045B47" stroke-width="1.8241" stroke-miterlimit="10" stroke-linecap="round"/>
+                      </svg>
+                    </span> :  
+                    <span>
+                      <svg width="16" height="10" viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 1L7.70958 8.43443L14.5 1.00009" stroke="#045B47" stroke-width="1.8241" stroke-miterlimit="10" stroke-linecap="round"/>
+                      </svg>
+                    </span>}
                   </div>
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                    <Dropdown.Item as={Link} to="/profile">
-                        Mi perfil
-                    </Dropdown.Item>
-                    <Dropdown.Item as={Link} to="/profile/orders">
-                        Mis pedidos
-                    </Dropdown.Item>
-                    <Dropdown.Divider />
-                    <Dropdown.Item onClick={handleLogout}>
-                        Cerrar sesión
-                    </Dropdown.Item>
-                </Dropdown.Menu>
-            </Dropdown> */}
-            <Nav.Link 
-              as={Link} 
-              to="/" 
-              onClick={handleMenuClose} 
-              className={isActive("/") ? "apple-garamond-bold container" : "apple-garamond-light container"}
-            >
-              Inicio
             </Nav.Link>
-              <hr />
+                {showUserMenu && (
+                    <div className="user-dropdown-menu" >
+                      <Nav.Link as={Link} to="/profile/orders" onClick={() => { setShowUserMenu(false); handleMenuClose && handleMenuClose(); }} 
+                        className="border-bottom container py-3 px-2 sans-regular color-green">
+                        Mis Pedidos
+                      </Nav.Link>
+                      <Nav.Link as={Link} to="/profile" onClick={() => { setShowUserMenu(false); handleMenuClose && handleMenuClose(); }} 
+                        className="border-bottom container py-3 px-2 sans-regular color-green">
+                        Mi perfil
+                      </Nav.Link>
+                      <Nav.Link onClick={() => { setShowUserMenu(false); handleLogout(); }} className="apple-garamond-light container my-2">
+                       <div className="d-flex justify-content-between align-items-center py-3 px-2">
+                        <span className="sans-regular color-green">
+                            Cerrar sesión 
+                        </span>
+                        <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_1857_1420)">
+                        <path d="M7.83607 0.0459935C8.41049 0.0236207 10.05 -0.0898413 10.4784 0.149068C11.3097 0.612505 11.0169 1.82943 10.046 1.94049C7.00396 2.28807 2.83304 0.932915 2.19878 5.18774C1.56453 9.44257 2.26819 14.6794 2.10943 19.0788C2.22431 23.9785 6.70079 22.7248 9.9702 23.0316C11.3025 23.1571 11.2571 24.8151 10.0468 24.9525C8.90114 25.0828 6.85158 24.9182 5.66843 24.7831C0.820973 24.2278 0.406114 21.8243 0.192303 17.4824C0.0135944 13.8468 -0.202611 8.49412 0.375798 4.96002C1.1034 0.513425 3.8622 0.201005 7.83607 0.0459935Z" fill="#045B47"/>
+                        <path d="M22.4518 13.4469H8.53016C8.20146 13.4469 7.77943 12.8644 7.76905 12.5248C7.75709 12.1517 8.16796 11.5292 8.53016 11.5292H22.4518L18.8178 8.09741C17.9873 7.16494 19.1011 5.87132 20.0975 6.65596C21.3668 7.99753 23.0183 9.22004 24.2477 10.5696C25.2322 11.6515 25.2561 13.2567 24.2844 14.3634C23.3957 15.375 21.812 16.7972 20.7781 17.7233C20.5371 17.939 19.9531 18.4872 19.6811 18.5431C18.7508 18.7349 18.1756 17.6506 18.7811 16.9219L22.4518 13.4469Z" fill="#045B47"/>
+                        </g>
+                        <defs>
+                        <clipPath id="clip0_1857_1420">
+                        <rect width="25" height="25" fill="white"/>
+                        </clipPath>
+                        </defs>
+                        </svg>
+                       </div>
+                      </Nav.Link>
+                    </div>
+                  )}
             <Nav.Link 
               as={Link} 
               to="/products" 
               onClick={handleMenuClose} 
-              className={isActive("/products") ? "apple-garamond-bold container" : "apple-garamond-light container"}
-            >
+              className="border-bottom container py-3 px-2 sans-regular color-green">
               Productos
             </Nav.Link>
-
+            <Nav.Link 
+              as={Link} 
+              to="/" 
+              onClick={handleMenuClose} 
+              className="container py-3 px-2 sans-regular color-green">
+              Inicio
+            </Nav.Link>
           </Nav> 
         </Offcanvas.Body>
       </Offcanvas>

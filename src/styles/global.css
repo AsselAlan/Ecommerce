@@ -71,6 +71,9 @@
 }
 
 /* Definir Encode Sans */
+.color-green{
+  color: var(--color-accent);
+}
 
 .sans-light {
   font-family: "Encode Sans", sans-serif;
@@ -119,6 +122,10 @@
   font-family: "Apple Garamond", serif;
   font-weight: 700;
   font-style: normal;
+}
+
+.text-italic {
+  font-style: italic;
 }
 
 

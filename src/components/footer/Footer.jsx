@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <footer className="bg-light mt-5 py-4 border-top container-footer">
       <Container>
-        <Row className="text-center text-md-start">
+        <Row className="text-center text-md-start d-flex ">
           <Col md={4} className="d-flex flex-column align-items-center border-lateral">
             <svg className="pb-4" width="119" height="79" viewBox="0 0 119 79" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g clip-path="url(#clip0_1703_160)">
@@ -45,7 +45,7 @@ const Footer = () => {
             <img src={footerAño} className="img-año" alt="Footer Año" width="100%" />
             <div></div>
           </Col>
-          <Col md={3} className="sans-light d-flex flex-column justify-content-between">
+          <Col md={3} className="w-auto sans-light d-flex flex-column justify-content-between">
             <h6 className="apple-medium tittle-links">Enlaces</h6>
             <ul className="list-unstyled d-flex flex-column justify-content-end m-0">
               <li>

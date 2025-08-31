@@ -7,8 +7,10 @@
     width: 150px;
 }
 
-.contact-inf{
+.contact-info{
     color: var(--color-light) !important;
+    border-top: 1px solid var(--color-light) !important;
+    margin-top: 20px !important;
 }
 
 .tittle-links{
@@ -23,8 +25,7 @@
 
 .border-lateral{
   width: 300px;
-  margin-right: 3rem;
-  border-right: 1px solid var(--color-light) !important;  
+  border-right: none !important;
 }
 
 
@@ -36,12 +37,14 @@
   .container-footer {
     padding: 2rem 0;
   }
+
+  .contact-info {
+    border-top: none !important;
+  }
   
   .border-lateral {
     border-right: 1px solid var(--color-light) !important;
-    margin-right: 1.5rem;
-    padding-right: 1rem;
-    margin-bottom: 2rem;
+    border-bottom: none !important;
   }
   
   .tittle-links {

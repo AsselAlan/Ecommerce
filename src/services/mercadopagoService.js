@@ -1,5 +1,20 @@
 import { supabase } from '../libs/supabaseClient';
 
+// Configuración segura de variables
+const getEnvVar = (name, defaultValue = null) => {
+  const value = import.meta.env[name];
+  if (!value && defaultValue === null) {
+    console.error(`🚨 Variable de entorno faltante: ${name}`);
+  }
+  return value || defaultValue;
+};
+
+const MP_ACCESS_TOKEN = getEnvVar('VITE_MP_ACCESS_TOKEN');
+const MP_SUCCESS_URL = getEnvVar('VITE_MP_SUCCESS_URL', `${window.location.origin}/pago-exitoso`);
+const MP_FAILURE_URL = getEnvVar('VITE_MP_FAILURE_URL', `${window.location.origin}/pago-fallido`);
+const MP_PENDING_URL = getEnvVar('VITE_MP_PENDING_URL', `${window.location.origin}/pago-pendiente`);
+const MP_NOTIFICATION_URL = getEnvVar('VITE_MP_NOTIFICATION_URL');
+
 /**
  * Crear preferencia de pago en MercadoPago usando la API REST
  * @param {Object} pedidoData - Datos del pedido
@@ -7,16 +22,15 @@ import { supabase } from '../libs/supabaseClient';
  */
 export const crearPreferenciaPago = async (pedidoData) => {
   try {
-    const accessToken = import.meta.env.VITE_MP_ACCESS_TOKEN;
-    
-    console.log('🔑 Access Token configurado:', accessToken ? 'SÍ' : 'NO');
-    console.log('🌐 URLs de retorno:', {
-      success: `${window.location.origin}/Ecommerce/pago-exitoso`,
-      failure: `${window.location.origin}/Ecommerce/pago-fallido`,
-      pending: `${window.location.origin}/Ecommerce/pago-pendiente`
+    console.log('🔑 Access Token configurado:', MP_ACCESS_TOKEN ? 'SÍ' : 'NO');
+    console.log('🌍 URLs de retorno:', {
+      success: MP_SUCCESS_URL,
+      failure: MP_FAILURE_URL,
+      pending: MP_PENDING_URL,
+      webhook: MP_NOTIFICATION_URL
     });
     
-    if (!accessToken) {
+    if (!MP_ACCESS_TOKEN) {
       throw new Error('Token de acceso de MercadoPago no configurado');
     }
 
@@ -48,7 +62,7 @@ export const crearPreferenciaPago = async (pedidoData) => {
       payer: {
         name: pedidoData.usuario_metadata?.nombre || 'Cliente',
         surname: pedidoData.usuario_metadata?.apellido || 'Test',
-        email: 'cliente.test@gmail.com', // Email diferente para testing
+        email: 'cliente.test@gmail.com',
         phone: {
           area_code: '',
           number: pedidoData.lugar_entrega?.telefono || ''
@@ -62,29 +76,29 @@ export const crearPreferenciaPago = async (pedidoData) => {
       payment_methods: {
         excluded_payment_types: [],
         excluded_payment_methods: [],
-        installments: 12, // Hasta 12 cuotas
+        installments: 12,
         default_installments: 1
       },
       back_urls: {
-        success: `${window.location.origin}/Ecommerce/pago-exitoso`,
-        failure: `${window.location.origin}/Ecommerce/pago-fallido`,
-        pending: `${window.location.origin}/Ecommerce/pago-pendiente`
+        success: MP_SUCCESS_URL,
+        failure: MP_FAILURE_URL,
+        pending: MP_PENDING_URL
       },
-      auto_return: 'approved', // ← ESTO FUERZA LA REDIRECCIÓN AUTOMÁTICA
+      notification_url: MP_NOTIFICATION_URL,
+      auto_return: 'approved',
       binary_mode: false,
       external_reference: pedidoData.numero_orden.toString(),
       expires: true,
       expiration_date_from: new Date().toISOString(),
-      expiration_date_to: new Date(Date.now() + 30 * 60 * 1000).toISOString(), // 30 minutos
+      expiration_date_to: new Date(Date.now() + 30 * 60 * 1000).toISOString(),
       metadata: {
         numero_orden: pedidoData.numero_orden,
         usuario_id: pedidoData.usuario,
-        tienda: 'Entre Patitas OK'
+        tienda: 'Entre Patitas'
       }
     };
 
     console.log('Enviando datos a MercadoPago:', preferenceData);
-    console.log('🌍 Origin actual:', window.location.origin);
     console.log('📝 External reference:', pedidoData.numero_orden);
 
     // Hacer la petición a la API de MercadoPago
@@ -92,7 +106,7 @@ export const crearPreferenciaPago = async (pedidoData) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${accessToken}`
+        'Authorization': `Bearer ${MP_ACCESS_TOKEN}`
       },
       body: JSON.stringify(preferenceData)
     });

@@ -8,7 +8,17 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "migrate:005": "node scripts/run-migration-005.js",
+    "migrate:direct": "node scripts/migrate-direct.js",
+    "migrate:cli": "bash scripts/migrate-cli.sh",
+    "migrate:cli:win": "powershell -ExecutionPolicy Bypass -File scripts/migrate-cli.ps1",
+    "migrate:batch": "scripts/migrate-cli.bat",
+    "verify:migration": "node scripts/verify-migration-005.js",
+    "supabase:status": "supabase status",
+    "supabase:start": "supabase start",
+    "supabase:stop": "supabase stop",
+    "supabase:reset": "supabase db reset"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.50.0",

@@ -7,6 +7,20 @@ build/
 
 # Local env files
 .env
+.env.local
+.env.development
+.env.production
+.env.staging
+
+# Credenciales sensibles
+*.pem
+*.key
+secrets/
+.vscode/settings.json
+
+# Archivos temporales
+*.tmp
+*.temp
 
 # Vite cache
 .vite/

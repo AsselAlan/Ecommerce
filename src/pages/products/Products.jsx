@@ -111,7 +111,7 @@ const Products = () => {
   }
   
   return (
-    <Container className="mt-4">
+    <Container className="mt-4 container-section">
       <Row>
         {/* Sidebar de filtros (izquierda) */}
         <Col md={3}>
@@ -165,6 +165,7 @@ const Products = () => {
                 min="500"
                 max="5000"
                 step="100"
+                className="form-range"
                 value={maxPrice || 5000}
                 onChange={(e) => setMaxPrice(e.target.value)}
               />
